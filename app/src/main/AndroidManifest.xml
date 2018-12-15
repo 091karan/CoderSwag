@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".controller.ProductsActivity">
         </activity>
+        <activity android:name=".controller.ProductDetailActivity">
+        </activity>
     </application>
 
 </manifest>

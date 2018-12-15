@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">CoderSwag</string>
     <string name="background_image">Background Image</string>
+    <string name="price">Price:</string>
+    <string name="add_to_cart">ADD TO CART</string>
+    <string name="product_name">Product Name:</string>
+    <string name="product_image">Product Image</string>
 </resources>

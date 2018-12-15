@@ -12,10 +12,10 @@ import com.karan.android.coderswag.model.Product
 import kotlinx.android.synthetic.main.products_list_item.view.*
 import java.text.FieldPosition
 
-class ProductsAdapter(val context: Context,val products: List<Product>) : RecyclerView.Adapter<ProductsAdapter.Holder>() {
+class ProductsAdapter(val context: Context,val products: List<Product>,val itemClick: (Product) -> Unit) : RecyclerView.Adapter<ProductsAdapter.Holder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(context).inflate(R.layout.products_list_item,parent,false)
-        return Holder(view)
+        return Holder(view,itemClick)
     }
 
     override fun getItemCount(): Int {
@@ -26,7 +26,7 @@ class ProductsAdapter(val context: Context,val products: List<Product>) : Recycl
         holder.bindProduct(products[position],context)
     }
 
-    inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class Holder(itemView: View,val itemClick: (Product) -> Unit) : RecyclerView.ViewHolder(itemView){
         val productImage = itemView.findViewById<ImageView>(R.id.productImage)
         val productName = itemView.findViewById<TextView>(R.id.productName)
         val productPrice = itemView.findViewById<TextView>(R.id.productCost)
@@ -36,6 +36,9 @@ class ProductsAdapter(val context: Context,val products: List<Product>) : Recycl
             productImage.setImageResource(imageResourceId)
             productName.text = product.title
             productPrice.text = product.price
+            itemView.setOnClickListener {
+                itemClick(product)
+            }
         }
 
     }

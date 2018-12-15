@@ -1,5 +1,6 @@
 package com.karan.android.coderswag.controller
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import com.karan.android.coderswag.R
 import com.karan.android.coderswag.adapters.ProductsAdapter
 import com.karan.android.coderswag.services.DataService
 import com.karan.android.coderswag.utilities.EXTRA_CATEGORY
+import com.karan.android.coderswag.utilities.EXTRA_PRODUCT
 import kotlinx.android.synthetic.main.activity_products.*
 
 class ProductsActivity : AppCompatActivity() {
@@ -19,7 +21,12 @@ class ProductsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_products)
         val categoryName = intent.getStringExtra(EXTRA_CATEGORY)
 
-        productsAdapter = ProductsAdapter(this,DataService.getProducts(categoryName))
+        productsAdapter = ProductsAdapter(this,DataService.getProducts(categoryName)){product ->
+            val intent = Intent(this,ProductDetailActivity::class.java)
+            intent.putExtra(EXTRA_PRODUCT,product)
+            startActivity(intent)
+
+        }
         productsItemView.adapter = productsAdapter
 
         var spanCount = 2
@@ -37,6 +44,8 @@ class ProductsActivity : AppCompatActivity() {
         productsItemView.layoutManager = GridLayoutManager(this,spanCount)
 
         productsItemView.setHasFixedSize(true)
+
+
 
     }
 }
