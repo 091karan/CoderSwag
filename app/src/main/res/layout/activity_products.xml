@@ -5,20 +5,20 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".controller.MainActivity">
+        tools:context=".controller.ProductsActivity">
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Categories"
+            android:text="Products"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="13dp" android:layout_marginLeft="16dp"
             android:id="@+id/textView" android:textSize="18sp" android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/listItemView" android:layout_marginBottom="16dp"/>
+            app:layout_constraintBottom_toTopOf="@+id/ProductsItemView" android:layout_marginBottom="16dp"/>
     <android.support.v7.widget.RecyclerView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:id="@+id/listItemView"
+            android:id="@+id/ProductsItemView"
             app:layout_constraintTop_toBottomOf="@+id/textView" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
